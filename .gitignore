@@ -1,0 +1,8 @@
+/vendor
+/node_modules
+.env
+.idea/*
+.sass-cache/*
+.sass-cache
+npm-debug.log
+.DS_STORE

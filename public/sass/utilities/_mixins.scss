@@ -1,0 +1,33 @@
+$baseline-px: 10px;
+
+@mixin rem($property, $px-values) {
+$baseline-rem: $baseline-px / 1rem * 1;
+#{$property}: $px-values;
+@if type-of($px-values) == "number" {
+	#{$property}: $px-values / $baseline-rem; }
+	@else {
+		$rem-values: ();
+		@each $value in $px-values {
+			@if $value == 0 or type-of( $value ) != "number" {
+				$rem-values: append($rem-values, $value); 
+			}
+			@else {
+				$rem-values: append($rem-values, $value / $baseline-rem);
+			}
+		}
+		#{$property}: $rem-values;
+	}
+}
+
+@mixin customGrid($item, $parent){
+  $w: 100% - ($grid-margin * ($parent - 1));
+  $m: ($w / $parent * $item) + ($grid-margin * ($item - 1));
+  width: $m;
+  margin-left: $grid-margin;
+}
+
+@mixin seperator($colour){
+		fill: $colour;
+		stroke: $colour;
+		stroke-width: 2;
+}
